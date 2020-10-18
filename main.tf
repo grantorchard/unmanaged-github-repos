@@ -1,8 +1,17 @@
 provider "github" {
   individual = false
   organization = "grantorchard"
-  version    = "2.4.0"
 }
+
+terraform {
+  required_providers {
+    github = {
+      source  = "hashicorp/github"
+      version = "2.4.0"
+    }
+  }
+}
+
 
 module "terraform-nsx-remote-state" {
   source          = "./github_module"
@@ -43,4 +52,20 @@ module "terraform-vsphere-module-virtual-machine" {
 module "terraform-vsphere-virtual-machine-vmug" {
   source = "./github_module"
   repository_name = "terraform-vsphere-virtual-machine-vmug"
+}
+
+module "packer-vsphere-base" {
+  source = "./github_module"
+  repository_name = "packer-vsphere-base"
+}
+
+
+module "terraform-vault-dynamic-policy" {
+  source = "./github_module"
+  repository_name = "terraform-vault-dynamic-policy"
+}
+
+module "packer-gitlab" {
+  source = "./github_module"
+  repository_name = "packer-gitlab"
 }
