@@ -5,8 +5,11 @@ resource github_repository "this" {
   private = var.repository_private
   has_issues = var.has_issues
 
-  template {
-    owner = var.template_repository_owner
-    repository = var.template_repository_name
+  dynamic "template" {
+    for_each = var.repository_template != false ? [0] : []
+    content {
+      owner = var.template_repository_owner
+      repository = var.template_repository_name
+    }
   }
 }

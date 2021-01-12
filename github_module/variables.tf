@@ -25,3 +25,11 @@ variable repository_private {
 variable has_issues {
   default = true
 }
+
+variable license_template {
+  default = "apache-2.0.txt"
+}
+
+variable repository_template {
+  default = true
+}
